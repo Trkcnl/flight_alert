@@ -9,14 +9,12 @@ class User:
     :param: name: Name of user
     :param: email: Email address of user
     :param: alerts: List of alert objects
-    :param: flight: List of flights that user set alert to
     """
     def __init__(self, user_id, email, name):
         self._user_id = user_id
         self.email = email
         self.name = name
         self._alerts = []
-        self._flights = []
 
     @property
     def user_id(self):
@@ -26,9 +24,6 @@ class User:
     def alerts(self):
         return self._alerts
 
-    @property
-    def flights(self):
-        return self._flights
 
     def set_alert(self, flight, threshold):
         if not isinstance(flight, Flight):
@@ -38,6 +33,5 @@ class User:
         else:
             new_alert = None
             self._alerts.append(new_alert)
-            self._flights.append(flight)
 
             print(f'Alert {flight.pnr_no} has been set to {threshold}')
