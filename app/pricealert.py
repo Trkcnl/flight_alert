@@ -14,10 +14,10 @@ class PriceAlert:
         self.threshold = threshold
         self._is_on = True
 
-    def check_price(self, user):
+    def check_price(self, user, curr_price):
         if not isinstance(user, User):
             raise TypeError('User must be of type User')
-        if (self.flight.price < self.threshold) & self._is_on:
+        if (curr_price < self.threshold) & self._is_on:
             self._is_on = False
             self._alert_user(user)
             print(f"Price alert has been triggered and {user.name} is alerted")
