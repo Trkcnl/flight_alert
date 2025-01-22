@@ -5,18 +5,19 @@ class Flight:
     """
     Flight class to represent a commercial flight
     
-    :param: pnr_no: PNR number of the flight
+    :param: flight_no: Flight number of the flight
     :param: flight_date: Flight date of the flight
-    :param: price: Price of the flight
     """
-    def __init__(self, pnr_no, price, flight_date):
-        self._pnr_no = pnr_no
+    def __init__(self, flight_no, flight_date: datetime):
+        self._flight_no = flight_no
         self._flight_date: datetime = flight_date
-        self.price = price
+
+    def __eq__(self, other):
+        return (self._flight_no == other.flight_no) & (self._flight_date == other.flight_date)
 
     @property
     def pnr_no(self):
-        return self._pnr_no
+        return self._flight_no
 
     @property
     def flight_date(self):
